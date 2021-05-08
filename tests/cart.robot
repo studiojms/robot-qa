@@ -19,15 +19,15 @@ Should add one item to the cart
     Total Cart Should Be    15,60
 
 Should Add 3 items to the cart
-    ${car_json}         Get JSON  cart.json
+    ${cart_json}         Get JSON  cart.json
 
     Go To restaurants
-    Choose Restaurant   ${car_json}
+    Choose Restaurant   ${cart_json}
 
-    FOR     ${product}      IN     @{car_json["products"]}
+    FOR     ${product}      IN     @{cart_json["products"]}
         Add To Cart             ${product["name"]}
         Should Add To Cart      ${product["name"]}
     END
 
-    Total Cart Should Be    ${car_json["total"]}
+    Total Cart Should Be    ${cart_json["total"]}
 
