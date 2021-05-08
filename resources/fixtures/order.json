@@ -1,0 +1,23 @@
+{
+  "restaurant": "DEBUGGER KING",
+  "desc": "40 anos se especializando em trash food.",
+  "products": [
+    {
+      "name": "Woopper Burger"
+    },
+    {
+      "name": "Batatas Fritas"
+    },
+    {
+      "name": "Refrigerante"
+    }
+  ],
+  "total": "28,50",
+  "customer": {
+    "name": "John Doe",
+    "email": "johndoe@email.com",
+    "address": "Rua dos bugs",
+    "number": "1000"
+  },
+  "payment": "Dinheiro"
+}
