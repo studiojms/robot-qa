@@ -1,3 +1,3 @@
 #!/bin/bash
 
-robot -d ./logs ./tests/*.robot 
+robot -d ./logs ./tests
