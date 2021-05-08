@@ -11,6 +11,13 @@ Go To restaurants
     Click           text=Estou com fome!
     Get Text        h1 strong   contains    Ta na hora de matar a fome!
 
+Choose Restaurant
+    [Arguments]     ${super_var}
+
+    Click                       text=${super_var["restaurant"]}
+    Wait For Elements State     css=#detail     visible     10
+    Get Text                    css=#detail     contains        ${super_var["desc"]}
+
 Search by
     [Arguments]     ${value}
     Click           css=.search-link

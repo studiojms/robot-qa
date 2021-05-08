@@ -4,13 +4,6 @@ Documentation       Shopping Cart functionality actions
 
 
 * Keywords *
-Choose Restaurant
-    [Arguments]     ${super_var}
-
-    Click                       text=${super_var["restaurant"]}
-    Wait For Elements State     css=#detail     visible     10
-    Get Text                    css=#detail     contains        ${super_var["desc"]}
-
 Add To Cart
     [Arguments]     ${name}
 
@@ -24,4 +17,5 @@ Should Add To Cart
 Total Cart Should Be
     [Arguments]     ${value}
 
+    Log             ${value}
     Get Text        xpath=//th[contains(text(),"Total")]/..//td     contains    ${value}
