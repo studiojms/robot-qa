@@ -15,7 +15,7 @@ Choose Restaurant
     [Arguments]     ${super_var}
 
     Click                       text=${super_var["restaurant"]}
-    Wait For Elements State     css=#detail     visible     10
+    Wait For Elements State     css=#detail     visible     ${DEFAULT_TIMEOUT}
     Get Text                    css=#detail     contains        ${super_var["desc"]}
 
 Search by
@@ -25,10 +25,10 @@ Search by
 
 Restaurant Should be Visible
     [Arguments]     ${name}
-    Wait For Elements State     ${RESTAURANT_DIV_BOX}     visible     10
+    Wait For Elements State     ${RESTAURANT_DIV_BOX}     visible     ${DEFAULT_TIMEOUT}
     Get Text                    ${PLACE_INFO_BOX}     contains    ${name}
 
 Restaurant Count Should be
     [Arguments]     ${count}
-    Wait For Elements State     ${PLACE_INFO_BOX}     visible     10
+    Wait For Elements State     ${PLACE_INFO_BOX}     visible     ${DEFAULT_TIMEOUT}
     Get Element Count           ${PLACE_INFO_BOX}     equal   ${count}
