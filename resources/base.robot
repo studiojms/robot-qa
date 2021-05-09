@@ -6,6 +6,7 @@ Library     OperatingSystem
 
 Resource    actions/search.robot
 Resource    actions/cart.robot
+Resource    actions/order.robot
 
 * Keywords *
 
