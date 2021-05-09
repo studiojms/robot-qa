@@ -7,7 +7,7 @@ Test Setup      Start Session
 Test Teardown   Take Screenshot
 
 * Test Cases *
-Should create a new order
+Should create a new order paying in cash
     ${order}        Get JSON  order.json
 
     Go To restaurants
@@ -20,7 +20,10 @@ Should create a new order
 
     Go To Checkout
 
-    Fill Customer Data  ${order["customer"]}
+    Fill Customer Data      ${order["customer"]}
+    Select Payment Option   ${order["payment"]}
+    Pay Order
+    Order Should Be Completed
 
 * Keywords *
 Go To Checkout
@@ -39,3 +42,27 @@ Fill Customer Data
     Fill Text       css=input[placeholder^="Confirmação"]   ${customer["email"]}
     Fill Text       css=input[placeholder="Endereço"]       ${customer["address"]}
     Fill Text       css=input[placeholder="Número"]         ${customer["number"]}
+    
+Select Payment Option
+    [Arguments]     ${payment}
+
+    Log     Forma PGTO: ${payment}
+    IF          "${payment}" == "Dinheiro"
+        Click   xpath=(//mt-radio//label)[1]//div
+
+    ELSE IF     "${payment}" == "Cartão de Débito"
+        Click   xpath=(//mt-radio//label)[2]//div
+    
+    ELSE IF     "${payment}" == "Cartão de Refeição"
+        Click   xpath=(//mt-radio//label)[3]//div
+    
+    ELSE
+        Fail    Incorrect Payment Type
+
+    END
+
+Pay Order
+    Click   text=Concluir Pedido
+
+Order Should Be Completed
+    Wait For Elements State     css=p >> text=Seu pedido foi recebido pelo restaurante.     visible     5
